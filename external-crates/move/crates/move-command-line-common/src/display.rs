@@ -16,7 +16,15 @@ pub fn try_render_constant(constant: &Constant) -> RenderResult {
         SignatureToken::Vector(inner_ty) if inner_ty.as_ref() == &SignatureToken::U8 => {
             bcs::from_bytes::<Vec<u8>>(bytes)
                 .ok()
-                .and_then(|x| String::from_utf8(x).ok())
+                .and_then(|x| {
+                    String::from_utf8(x).ok().and_then(|s| {
+                        if s.find("\0").is_none() {
+                            Some(s)
+                        } else {
+                            None
+                        }
+                    })
+                })
                 .map_or(RenderResult::NotRendered, RenderResult::AsString)
         }
         SignatureToken::U8 => bcs::from_bytes::<u8>(bytes)
