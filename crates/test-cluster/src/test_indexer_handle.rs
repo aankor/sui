@@ -14,7 +14,7 @@ use sui_sdk::{SuiClient, SuiClientBuilder};
 use tempfile::TempDir;
 use tokio::time::sleep;
 
-pub(crate) struct IndexerHandle {
+pub struct IndexerHandle {
     pub(crate) rpc_client: HttpClient,
     pub(crate) sui_client: SuiClient,
     pub(crate) rpc_url: String,
