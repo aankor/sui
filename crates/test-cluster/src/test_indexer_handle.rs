@@ -23,7 +23,7 @@ pub(crate) struct IndexerHandle {
     #[allow(unused)]
     data_ingestion_dir: Option<TempDir>,
     #[allow(unused)]
-    database: TempDb,
+    pub database: TempDb,
 }
 
 impl IndexerHandle {

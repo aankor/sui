@@ -92,7 +92,7 @@ pub struct TestCluster {
     pub swarm: Swarm,
     pub wallet: WalletContext,
     pub fullnode_handle: FullNodeHandle,
-    indexer_handle: Option<test_indexer_handle::IndexerHandle>,
+    pub indexer_handle: Option<test_indexer_handle::IndexerHandle>,
 }
 
 impl TestCluster {
